@@ -16,7 +16,7 @@ API REST para gestionar notas académicas con autenticación de usuarios. Cada u
 - Maven
 
 
-## Modelo de datos
+## Diagrama de clases
 
 Un Usuario puede tener muchas Notas (1 a N). Cada Nota pertenece a un único Usuario.
 
@@ -36,6 +36,26 @@ erDiagram
         String content
         String subject
         Date deadLine
+    }
+```
+## Diagrama E-R
+
+```mermaid
+erDiagram
+    USER ||--o{ NOTES : tiene
+    USER {
+        int user_id PK
+        varchar user_name
+        varchar user_email
+        varchar user_password
+    }
+    NOTES {
+        int notes_id PK
+        varchar note_title
+        text note_content
+        varchar note_subject
+        date note_deadline
+        int note_user_id FK
     }
 ```
 
